@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages {
+    stage('Test') {
+      steps {
+        sh 'python -m pip install -r requirements.txt'
+        sh 'python -m pip install /path/to/roottrace'
+        script {
+          def status = sh(script: 'python -m pytest -vv --junitxml=junit.xml 2>&1 | tee pytest.log', returnStatus: true)
+          sh 'roottrace init'
+          sh 'if [ -s junit.xml ]; then roottrace analyze junit.xml; else roottrace analyze pytest.log; fi'
+          archiveArtifacts artifacts: '.roottrace/reports/**,junit.xml,pytest.log', allowEmptyArchive: true
+          if (status != 0) {
+            error("Tests failed with exit code ${status}")
+          }
+        }
+      }
+    }
+  }
+}

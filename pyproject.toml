@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roottrace"
+version = "1.0.0"
+description = "Local-first CI failure analysis, flaky-test detection, change impact, and root-cause evidence engine"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Bharath K"}]
+license = {text = "MIT"}
+keywords = ["ci", "testing", "debugging", "root-cause", "flaky-tests", "devtools"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.scripts]
+roottrace = "roottrace.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

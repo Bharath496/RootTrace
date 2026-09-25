@@ -1,0 +1,25 @@
+name: roottrace-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install RootTrace
+        run: python -m pip install -e .
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Built-in benchmark
+        run: roottrace benchmark benchmarks/manifest.json
+      - name: CLI smoke test
+        run: |
+          roottrace init
+          roottrace analyze tests/fixtures/pytest_failure.log
+          roottrace doctor

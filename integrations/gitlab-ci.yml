@@ -1,0 +1,21 @@
+stages: [test]
+
+test-with-roottrace:
+  stage: test
+  image: python:3.12
+  script:
+    - python -m pip install -r requirements.txt
+    - python -m pip install /path/to/roottrace
+    - set +e
+    - python -m pytest -vv --junitxml=junit.xml 2>&1 | tee pytest.log
+    - TEST_EXIT=${PIPESTATUS[0]}
+    - set -e
+    - roottrace init
+    - if [ -s junit.xml ]; then roottrace analyze junit.xml; else roottrace analyze pytest.log; fi
+    - exit $TEST_EXIT
+  artifacts:
+    when: always
+    paths:
+      - .roottrace/reports/
+      - junit.xml
+      - pytest.log
