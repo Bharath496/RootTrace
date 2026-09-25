@@ -1,0 +1,14 @@
+FAIL src/auth/token.test.ts
+  token service
+    ✓ creates a token (3 ms)
+    ✕ refreshes expired token (8 ms)
+
+  JWTExpiredError: token expired
+
+    at refreshToken (src/auth/token.ts:44:11)
+    at Object.<anonymous> (src/auth/token.test.ts:31:9)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        0.812 s

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="payment" tests="3" failures="1" skipped="1">
+  <testcase classname="tests.payment.TestTax" name="test_tax_rounding" time="0.03" file="tests/payment/test_tax.py" />
+  <testcase classname="tests.payment.TestTax" name="test_invalid_rate" time="0.01" file="tests/payment/test_tax.py">
+    <failure type="AssertionError" message="expected 18.0 but got 17.9">trace</failure>
+  </testcase>
+  <testcase classname="tests.payment.TestTax" name="test_remote_tax" time="0.00" file="tests/payment/test_tax.py"><skipped /></testcase>
+</testsuite>

@@ -1,0 +1,10 @@
+{
+  "description": "Small built-in smoke benchmark. Replace or extend with real historical CI artifacts.",
+  "cases": [
+    {"name": "pytest auth failure", "file": "pytest_failure.log", "expected": {"parser": "pytest", "category": "test", "subtype": "test_failure"}},
+    {"name": "JUnit assertion", "file": "junit.xml", "expected": {"parser": "junit", "category": "test", "subtype": "test_failure"}},
+    {"name": "Jest auth failure", "file": "jest_failure.log", "expected": {"parser": "jest", "category": "test", "subtype": "test_failure"}},
+    {"name": "Gradle compilation", "file": "gradle_failure.log", "expected": {"parser": "maven-gradle", "category": "build", "subtype": "compilation"}},
+    {"name": "Generic network", "file": "generic_ci_failure.log", "expected": {"parser": "generic", "category": "infrastructure", "subtype": "network"}}
+  ]
+}

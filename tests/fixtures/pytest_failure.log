@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.4, pytest-8.3.0
+collected 2 items
+
+tests/auth/test_token.py::test_login PASSED
+tests/auth/test_token.py::test_refresh_token FAILED
+
+____________________________ test_refresh_token _____________________________
+tests/auth/test_token.py:72: in test_refresh_token
+    refresh_token(token)
+src/auth/token.py:118: in refresh_token
+    raise JWTExpiredError("token expired while refreshing session")
+E   JWTExpiredError: token expired while refreshing session
+
+=========================== short test summary info ============================
+FAILED tests/auth/test_token.py::test_refresh_token - JWTExpiredError: token expired while refreshing session
+========================= 1 failed, 1 passed in 0.20s =========================

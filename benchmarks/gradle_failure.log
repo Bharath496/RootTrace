@@ -1,0 +1,9 @@
+> Task :compileJava FAILED
+/path/src/main/java/com/acme/UserService.java:[42,17] cannot find symbol
+  symbol:   method loadUser()
+  location: variable repo of type UserRepository
+
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
